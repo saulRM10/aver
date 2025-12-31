@@ -9,6 +9,10 @@ async function calculateImpactScore(accomplishment, jobDescription) {
   // Goal: Does this win actually map to a "Skill Code" or "Responsibility" in the JD?
   // Logic: Use the LLM to compare the accomplishment against the JD's 'Core Competencies'.
   // Example: Win mentions "Testing Hexavalent Chromium" -> Maps to JD "Water Quality Compliance".
+
+  // need to parse accomplishment text
+  const parsedAccomplishment = await accomplishmentPrep(accomplishment);
+  
   const alignmentScore = await getSemanticMapping(
     accomplishment,
     jobDescription
